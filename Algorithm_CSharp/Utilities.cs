@@ -30,7 +30,7 @@ namespace Algorithm_CSharp
 			return argument.Value;
 		}
 
-		// "string value [[1,2],[3,10]] translate with int[][] type"
+		// string value "[[1,2],[3,10]]" translate to int[][] type
 		public int[][] ToJaggedIntArray()
 		{
 			var value = Value.Replace(" ", "");
@@ -52,6 +52,12 @@ namespace Algorithm_CSharp
 			}
 
 			return result; 
+		}
+
+		// string value "[2,5]" translate to int[] type
+		public int[] ToIntArray()
+		{
+			return Value.Replace("[", "").Replace("]", "").Split(',').Select(int.Parse).ToArray();
 		}
 	}
 
