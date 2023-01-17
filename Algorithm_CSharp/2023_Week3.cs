@@ -8,6 +8,29 @@ namespace Algorithm_CSharp
 {
 	internal class Problems_2023_Week3
 	{
+		class Test_926
+		{
+			public static readonly object[] TestSource = new object[]
+			{
+				new object[] { "00110", 1 },
+				new object[] { "010110", 2 },
+				new object[] { "00011000", 2 },
+			};
+
+			[TestCaseSource(nameof(TestSource))]
+			public void Test(string s, int expectedResult)
+			{
+				var result = MinFlipsMonoIncr(s);
+				Assert.That(result, Is.EqualTo(expectedResult));
+			}
+
+			public int MinFlipsMonoIncr(string s)
+			{
+				return 0;
+			}
+		}
+
+
 		class Test_57
 		{
 			public static readonly object[] TestSource = new object[]
@@ -32,7 +55,7 @@ namespace Algorithm_CSharp
 			public int[][] Insert(int[][] intervals, int[] newInterval)
 			{
 				var mergedIndexes = intervals.Select((v, i) => new { interval = v, index = i })
-											 .Where(entry => (entry.interval[0] <= newInterval[0] && newInterval[0] <= entry.interval[1]) || (entry.interval[0] <= newInterval[1] && newInterval[1] <= entry.interval[1]) || (newInterval[0] <= entry.interval[0] && entry.interval[1] <= newInterval[1]))
+											 .Where(e => (e.interval[0] <= newInterval[0] && newInterval[0] <= e.interval[1]) || (e.interval[0] <= newInterval[1] && newInterval[1] <= e.interval[1]) || (newInterval[0] <= e.interval[0] && e.interval[1] <= newInterval[1]))
 											 .Select(entry => entry.index).ToArray();
 
 				var result = intervals.Where((_, i) => mergedIndexes.Contains(i) == false).ToList();
